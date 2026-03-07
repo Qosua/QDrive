@@ -1,12 +1,7 @@
-#include <QApplication>
-#include <QPushButton>
+#include <QCoreApplication>
 
-int main(int argc, char *argv[]) {
-    QApplication a(argc, argv);
+int main(int argc, char* argv[]) {
+    QCoreApplication app(argc, argv);
 
-    QPushButton button("Hello server!", nullptr);
-    button.resize(200, 100);
-    button.show();
-
-    return QApplication::exec();
+    return app.exec();
 }
