@@ -6,7 +6,11 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-set(CMAKE_PREFIX_PATH "C:/ProgramLibs/Qt/6.9.3/mingw_64")
+if (DEFINED ENV{QT_ROOT})
+    set(QT_ROOT_PATH $ENV{QT_ROOT})
+endif ()
+
+set(CMAKE_PREFIX_PATH "${QT_ROOT_PATH}/mingw_64")
 
 find_package(Qt6 COMPONENTS
         Core
