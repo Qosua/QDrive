@@ -1,7 +1,14 @@
-#include <QApplication>
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 
-int main(int argc, char* argv[]) {
-    QApplication app(argc, argv);
+int main(int argc, char *argv[]) {
+    QGuiApplication app(argc, argv);
+
+    QQmlApplicationEngine engine(":/gui/main.qml");
+
+    QObject::connect(
+        &engine, &QQmlApplicationEngine::objectCreationFailed, &app,
+        []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
 
     return app.exec();
 }
