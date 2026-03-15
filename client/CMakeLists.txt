@@ -27,9 +27,9 @@ add_executable(client
         resources.qrc
 )
 
-target_precompile_headers(client PRIVATE
-        <spdlog/spdlog.h>
-)
+#target_precompile_headers(client PRIVATE
+#        <spdlog/spdlog.h>
+#)
 
 target_link_libraries(client PRIVATE
         Qt6::Core
@@ -37,7 +37,8 @@ target_link_libraries(client PRIVATE
         Qt6::Widgets
         Qt6::Quick
         Qt6::Qml
-        spdlog::spdlog
+        #spdlog::spdlog
+        $<$<PLATFORM_ID:Windows>:dwmapi>
 )
 
 if (WIN32)
